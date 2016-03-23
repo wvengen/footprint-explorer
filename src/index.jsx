@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import Layout from './layout';
 import Matrix from './matrix';
 
 let footprint = {
@@ -22,11 +23,9 @@ const icons = {
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <h1>Sustainability Footprint Explorer</h1>
-        <p>Hi there</p>
+      <Layout>
         <Matrix data={footprint} icons={icons} />
-      </div>
+      </Layout>
     );
   }
 };
