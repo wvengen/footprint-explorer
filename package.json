@@ -1,6 +1,6 @@
 {
-  "name": "hello-world",
-  "description": "Hello world",
+  "name": "footprint-explorer",
+  "description": "Visual sustainability footprint explorer",
   "version": "0.1.0",
   "license": "MIT",
   "author": "wvengen <dev-js@willem.engen.nl>",
