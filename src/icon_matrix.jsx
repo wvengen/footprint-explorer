@@ -4,7 +4,7 @@ const IconMatrix = (props) => {
   return (
     <div style={styles.container}>
       {Object.entries(props.data).map(([key, value]) =>
-        [,...Array(value)].map((i) =>
+        [,...Array(Math.round(value, 0))].map((i) =>
           <img src={props.icons[key]} key={key, i} style={styles.img} />
         )
       )}

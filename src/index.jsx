@@ -8,7 +8,7 @@ let usage = {
   milk:    12,
   cheese:   5,
   eggs:     3,
-  poultry:  2,
+  chicken:  2,
   beef:     1
 };
 

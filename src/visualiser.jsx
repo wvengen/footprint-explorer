@@ -2,23 +2,30 @@ import React from 'react'
 import {Col, Panel, Row} from 'react-bootstrap';
 
 import IconMatrix from './icon_matrix';
+import footprintData from './footprint-data';
 
 const icons = {
   milk:     'assets/icons/icon-milk.svg',
   cheese:   'assets/icons/icon-cheese.svg',
   eggs:     'assets/icons/icon-eggs.svg',
-  poultry:  'assets/icons/icon-poultry.svg',
+  chicken:  'assets/icons/icon-chicken.svg',
   beef:     'assets/icons/icon-beef.svg'
 };
 
 const Visualiser = (props) => {
+  const usage = props.usage;
+  const impact = {};
+  Object.entries(props.usage).forEach(function ([key, value]) {
+    const data = footprintData({area: 'us', impact: 'co2', food: key});
+    impact[key] = value * data.value;
+  });
+
   return (
     <Row>
       <Col xs={4}>
-        <Panel style={Object.assign({backgroundImage: 'url(assets/heading-plate.svg)'}, styles.panelLeft, styles.panelTop)}>
-        </Panel>
+        <Panel style={Object.assign({backgroundImage: 'url(assets/heading-plate.svg)'}, styles.panelLeft, styles.panelTop)} />
         <Panel style={styles.panelLeft}>
-          <IconMatrix data={props.usage} icons={icons} />
+          <IconMatrix data={usage} icons={icons} />
         </Panel>
       </Col>
       <Col xs={8}>
@@ -28,7 +35,7 @@ const Visualiser = (props) => {
           </div>
         </Panel>
         <Panel style={styles.panelRight}>
-          <IconMatrix data={props.usage} icons={icons} />
+          <IconMatrix data={impact} icons={icons} />
         </Panel>
       </Col>
     </Row>
