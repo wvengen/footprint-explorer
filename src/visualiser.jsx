@@ -1,42 +1,42 @@
 import React from 'react'
+import {observeProps} from 'rx-recompose';
 import {Col, Panel, Row} from 'react-bootstrap';
+
+import {usage$} from './model';
 
 import IconMatrix from './icon_matrix';
 import footprintData from './footprint-data';
 
-const Visualiser = (props) => {
-  const usage = props.usage;
-  const impact = {};
-  Object.entries(props.usage).forEach(function ([key, value]) {
-    const data = footprintData({area: 'us', impact: 'co2', food: key});
-    impact[key] = value * data.value;
-  });
+const Visualiser = observeProps(
+  $props => ({usage: usage$}),
+  ({usage}) => {
+    const impact = {};
+    Object.entries(usage).forEach(function ([key, value]) {
+      const data = footprintData({area: 'us', impact: 'co2', food: key});
+      impact[key] = value * data.value;
+    });
 
-  return (
-    <Row>
-      <Col xs={4}>
-        <Panel style={Object.assign({backgroundImage: 'url(assets/heading-plate.svg)'}, styles.panelLeft, styles.panelTop)} />
-        <Panel style={styles.panelLeft}>
-          <IconMatrix data={usage} />
-        </Panel>
-      </Col>
-      <Col xs={8}>
-        <Panel style={Object.assign({backgroundImage: 'url(assets/heading-clouds.svg)'}, styles.panelRight, styles.panelTop)}>
-          <div style={styles.panelTopText}>
-            CO<sub>2</sub>
-          </div>
-        </Panel>
-        <Panel style={styles.panelRight}>
-          <IconMatrix data={impact} />
-        </Panel>
-      </Col>
-    </Row>
-  );
-};
-
-Visualiser.propTypes = {
-  usage: React.PropTypes.objectOf(React.PropTypes.number).isRequired
-};
+    return (
+      <Row>
+        <Col xs={4}>
+          <Panel style={Object.assign({backgroundImage: 'url(assets/heading-plate.svg)'}, styles.panelLeft, styles.panelTop)} />
+          <Panel style={styles.panelLeft}>
+            <IconMatrix data={usage} />
+          </Panel>
+        </Col>
+        <Col xs={8}>
+          <Panel style={Object.assign({backgroundImage: 'url(assets/heading-clouds.svg)'}, styles.panelRight, styles.panelTop)}>
+            <div style={styles.panelTopText}>
+              CO<sub>2</sub>
+            </div>
+          </Panel>
+          <Panel style={styles.panelRight}>
+            <IconMatrix data={impact} />
+          </Panel>
+        </Col>
+      </Row>
+    );
+});
 
 const styles = {
   panelTop: {
