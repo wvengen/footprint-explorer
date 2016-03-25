@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import Layout from './layout';
+import FoodEntry from './food_entry';
 import Visualiser from './visualiser';
 
 let usage = {
@@ -16,6 +17,7 @@ class App extends React.Component {
   render() {
     return (
       <Layout>
+        <FoodEntry value={3} />
         <Visualiser usage={usage} />
       </Layout>
     );

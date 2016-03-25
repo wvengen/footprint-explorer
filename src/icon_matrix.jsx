@@ -1,11 +1,12 @@
 import React from 'react'
+import Icons from './icons';
 
 const IconMatrix = (props) => {
   return (
     <div style={styles.container}>
       {Object.entries(props.data).map(([key, value]) =>
         [,...Array(Math.round(value, 0))].map((i) =>
-          <img src={props.icons[key]} key={key, i} style={styles.img} />
+          <img src={Icons(key)} key={key, i} style={styles.img} />
         )
       )}
     </div>
@@ -13,8 +14,7 @@ const IconMatrix = (props) => {
 };
 
 IconMatrix.propTypes = {
-  data: React.PropTypes.objectOf(React.PropTypes.number),
-  icons: React.PropTypes.object
+  data: React.PropTypes.objectOf(React.PropTypes.number)
 };
 
 const styles = {
