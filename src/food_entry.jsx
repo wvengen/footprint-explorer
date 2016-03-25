@@ -7,7 +7,8 @@ import {usage$} from './model';
 
 import FoodEntryInput from './food_entry_input';
 
-const kinds = ['milk', 'cheese', 'eggs', 'chicken', 'beef'];
+const kinds0 = ['milk', 'cheese', 'eggs', 'chicken', 'beef'];
+const kinds1 = ['soymilk', 'almondmilk', 'tofu', 'beans', 'lentils', 'nuts'];
 
 const input = (kind, value, update) =>
   <FoodEntryInput kind={kind} value={value} onChange={(v) => update({[kind]: Number(v)})} key={kind} />;
@@ -16,7 +17,8 @@ export default observeProps(
   $props => ({update: Observable.just(usage$.update$), usage: usage$}),
   ({usage, update}) => (
     <Panel>
-      <div>{kinds.map((kind) => input(kind, usage[kind], update))}</div>
+      <div>{kinds0.map((kind) => input(kind, usage[kind], update))}</div>
+      <div>{kinds1.map((kind) => input(kind, usage[kind], update))}</div>
     </Panel>
   )
 );
