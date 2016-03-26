@@ -1,6 +1,5 @@
 Sustainability Footprint Explorer
 =================================
-
 An interactive visualisation of the footprint of food on your plate.
 
 This is inspired by an [infographic](infographic.pdf) I created about a
@@ -42,4 +41,5 @@ Standalone files in `build/`.
 
 Licensed under the [MIT license](https://opensource.org/licenses/MIT).
 Some artwork from [openclipart.org](http://openclipart.org/).
-Data from their respective [sources](src/footprint-data.js).
+Flags from [iso-country-flags-collection](https://github.com/linuxmint/iso-country-flags-svg-collection).
+Footprint data from their respective [sources](src/footprint-data.js).

@@ -28,3 +28,9 @@ export function isVegetarian(usage) {
 export function isVegan(usage) {
   return nonVegan.reduce((acc, c) => (acc && !(usage[c] > 0)), true);
 }
+
+const areaSet$ = createEventHandler();
+export const area$ = Observable
+  .merge(areaSet$)
+  .startWith('us').scan((acc, val) => val);
+area$.set$ = areaSet$;

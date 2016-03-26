@@ -14,6 +14,13 @@ const src = {
     title: 'Life Cycle Assessment of Coconut Milk and Two Non-Dairy Milk Beverage Alternatives',
     url: 'http://lcacenter.org/lcaxii/final-presentations/719.pdf'
     // see also http://sodeliciousdairyfree.com/environmental-footprint
+  },
+  blonk_2008: {
+    year: 2008,
+    assoc_name: 'Blonk Milieu Advies',
+    title: 'Milieueffecten van Nederlandse consumptie van eiwitrijke producten',
+    url: 'http://library.wur.nl/WebQuery/wurpubs/369782'
+    // direct pdf at http://edepot.wur.nl/117665
   }
 };
 
@@ -46,14 +53,42 @@ const data = [
   // this may not be fully comparable with the above, but it's the best we have now
   {area: 'us', impact: 'co2',      food: 'soymilk',       value:  0.32,  source: src.fa_milk_2012},
   {area: 'us', impact: 'co2',      food: 'almondmilk',    value:  0.058, source: src.fa_milk_2012},
-  {area: 'us', impact: 'co2',      food: 'coconutmilk',   value:  0.053, source: src.fa_milk_2012}  // specific brand
+  {area: 'us', impact: 'co2',      food: 'coconutmilk',   value:  0.053, source: src.fa_milk_2012}, // specific brand
+
+  {area: 'nl', impact: 'co2',      food: 'beef',          value: 15.9,   source: src.blonk_2008,    origin: 'nl'},
+  {area: 'nl', impact: 'co2',      food: 'beef',          value: 38.3,   source: src.blonk_2008,    origin: 'ie'},
+  {area: 'nl', impact: 'co2',      food: 'beef',          value: 59.0,   source: src.blonk_2008,    origin: 'br'},
+  //{area: 'nl', impact: 'co2',      food: 'beef',          value:  8.9,   source: src.blonk_2008} // from milk cattle
+  {area: 'nl', impact: 'co2',      food: 'lamb',          value: 16.3,   source: src.blonk_2008},
+  {area: 'nl', impact: 'co2',      food: 'veal',          value:  6.3,   source: src.blonk_2008},  // white veal
+  {area: 'nl', impact: 'co2',      food: 'pork',          value:  4.5,   source: src.blonk_2008},
+  {area: 'nl', impact: 'co2',      food: 'chicken',       value:  2.6,   source: src.blonk_2008,    origin: 'nl'},
+  {area: 'nl', impact: 'co2',      food: 'chicken',       value:  4.5,   source: src.blonk_2008,    origin: 'br'},
+  {area: 'nl', impact: 'co2',      food: 'soymilk',       value:  0.6,   source: src.blonk_2008},
+  {area: 'nl', impact: 'co2',      food: 'milk',          value:  1.2,   source: src.blonk_2008},
+  {area: 'nl', impact: 'co2',      food: 'cheese',        value:  8.9,   source: src.blonk_2008},
+  {area: 'nl', impact: 'co2',      food: 'eggs',          value:  2.0,   source: src.blonk_2008},
+  {area: 'nl', impact: 'co2',      food: 'shrimp',        value:  9.7,   source: src.blonk_2008},
+  {area: 'nl', impact: 'co2',      food: 'prawn',         value:  6.3,   source: src.blonk_2008},
+  {area: 'nl', impact: 'co2',      food: 'salmon',        value:  2.1,   source: src.blonk_2008}, // farmed
+  {area: 'nl', impact: 'co2',      food: 'pollock',       value:  1.6,   source: src.blonk_2008}, // wild
+  {area: 'nl', impact: 'co2',      food: 'valess',        value:  6.2,   source: src.blonk_2008},
+  {area: 'nl', impact: 'co2',      food: 'tofu',          value:  2.0,   source: src.blonk_2008},
+  {area: 'nl', impact: 'co2',      food: 'tempeh',        value:  1.1,   source: src.blonk_2008},
+  {area: 'nl', impact: 'co2',      food: 'cashew',        value:  2.3,   source: src.blonk_2008},
+  {area: 'nl', impact: 'co2',      food: 'walnut',        value:  2.1,   source: src.blonk_2008},
+  {area: 'nl', impact: 'co2',      food: 'peanut',        value:  1.4,   source: src.blonk_2008},
+  {area: 'nl', impact: 'co2',      food: 'beans',         value:  1.6,   source: src.blonk_2008}, // brown beans in glass
+  // not all foods from src.blonk_2008 are included here
+  // to get a value for nuts, we take the average of peants(0.5), walnut(0.25) and cashew(0.25)
+  {area: 'nl', impact: 'co2',      food: 'nuts',          value:  1.8,   source: src.blonk_2008},
 ];
 
 // food categories
-export const meat = ['lamb', 'beef', 'pork'];
+export const meat = ['lamb', 'beef', 'veal', 'pork'];
 export const poultry = ['chicken', 'turkey'];
-export const fish = ['salmon', 'tuna'];
-export const dairy = ['milk', 'yoghurt', 'cheese'];
+export const fish = ['salmon', 'tuna', 'shrimp', 'prawn', 'pollock'];
+export const dairy = ['milk', 'yoghurt', 'cheese', 'valess'];
 export const nonVegetarian = Array.concat(meat, poultry, fish);
 export const nonVegan = Array.concat(nonVegetarian, 'eggs', dairy);
 
