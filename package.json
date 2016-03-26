@@ -23,6 +23,7 @@
   },
   "scripts": {
     "start": "ENV=development ./node_modules/.bin/webpack-dev-server",
-    "build": "ENV=production ./node_modules/.bin/webpack -p && cp node_modules/bootstrap/dist/css/bootstrap.min.css build/ && sed 's/node_modules.*bootstrap/bootstrap/' index.html > build/index.html"
+    "build": "ENV=production ./node_modules/.bin/webpack -p && cp node_modules/bootstrap/dist/css/bootstrap.min.css build/ && sed 's/node_modules.*bootstrap/bootstrap/' index.html > build/index.html",
+    "publish": "npm run build && git checkout gh-pages && rm -f index.html *.svg bootstrap.min.css bundle.js && cp build/* . && if ! git diff --quiet; then git add index.html *.svg bootstrap.min.css bundle.js && git commit -m 'new build' && echo 'Now run: git push origin gh-pages'; else echo 'No changes'; fi && git checkout master "
   }
 }
