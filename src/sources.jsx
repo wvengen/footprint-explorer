@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Sources = (props) => {
-  console.log(props.sources);
   return (
     <div className="text-muted text-right" style={{opacity: 0.75}}>
       {props.sources.map((src, i) =>
