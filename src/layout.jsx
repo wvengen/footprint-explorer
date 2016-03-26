@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import GithubCorner from 'react-github-corner';
 import {Navbar, NavbarBrand, Nav, NavItem} from 'react-bootstrap';
 
 const Layout = (props) => {
@@ -10,6 +11,8 @@ const Layout = (props) => {
       <div className="container">
         {props.children}
       </div>
+      <GithubCorner href='https://github.com/wvengen/footprint-explorer'
+        bannerColor='#f8f8f8' octoColor='#888' />
     </div>
   );
 };
