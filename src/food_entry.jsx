@@ -14,11 +14,23 @@ const input = (kind, value, update) =>
   <FoodEntryInput kind={kind} value={value} onChange={(v) => update({[kind]: Number(v)})} key={kind} />;
 
 export default observeProps(
-  $props => ({update: Observable.just(usage$.update$), usage: usage$}),
-  ({usage, update}) => (
-    <Panel>
-      <div>{kinds0.map((kind) => input(kind, usage[kind], update))}</div>
-      <div>{kinds1.map((kind) => input(kind, usage[kind], update))}</div>
-    </Panel>
-  )
+  $props => ({
+    update: Observable.just(usage$.update$),
+    usage: usage$
+  }),
+  ({usage, update}) => {
+    return (
+      <Panel>
+        <div>{kinds0.map((kind) => input(kind, usage[kind], update))}</div>
+        <div>{kinds1.map((kind) => input(kind, usage[kind], update))}</div>
+      </Panel>
+    );
+  }
 );
+
+const styles = {
+  switchButton: {
+    float: 'right',
+    marginTop: 20
+  }
+}

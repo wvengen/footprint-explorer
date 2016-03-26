@@ -49,6 +49,14 @@ const data = [
   {area: 'us', impact: 'co2',      food: 'coconutmilk',   value:  0.053, source: src.fa_milk_2012}  // specific brand
 ];
 
+// food categories
+export const meat = ['lamb', 'beef', 'pork'];
+export const poultry = ['chicken', 'turkey'];
+export const fish = ['salmon', 'tuna'];
+export const dairy = ['milk', 'yoghurt', 'cheese'];
+export const nonVegetarian = Array.concat(meat, poultry, fish);
+export const nonVegan = Array.concat(nonVegetarian, 'eggs', dairy);
+
 export default function(query) {
   const entries = Object.entries(query);
   return data.find((x) =>
