@@ -22,6 +22,7 @@ module.exports = {
     './src/index'
   ]),
   output: {
+    path: './build',
     filename: 'bundle.js'
   },
   module: {
@@ -33,6 +34,10 @@ module.exports = {
         query: {
           presets: ['es2015', 'react']
         }
+      },
+      {
+        test: /\.(png|jpg|svgz?)$/,
+        loader: 'file-loader'
       }
     ]
   },

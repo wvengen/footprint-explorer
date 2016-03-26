@@ -19,13 +19,13 @@ const Visualiser = observeProps(
     return (
       <Row>
         <Col xs={4}>
-          <Panel style={Object.assign({backgroundImage: 'url(assets/heading-plate.svg)'}, styles.panelLeft, styles.panelTop)} />
+          <Panel style={Object.assign({backgroundImage: `url(${require('../assets/heading-plate.svg')})`}, styles.panelLeft, styles.panelTop)} />
           <Panel style={styles.panelLeft}>
             <IconMatrix data={usage} />
           </Panel>
         </Col>
         <Col xs={8}>
-          <Panel style={Object.assign({backgroundImage: 'url(assets/heading-clouds.svg)'}, styles.panelRight, styles.panelTop)}>
+          <Panel style={Object.assign({backgroundImage: `url(${require('../assets/heading-clouds.svg')})`}, styles.panelRight, styles.panelTop)}>
             <div style={styles.panelTopText}>
               CO<sub>2</sub>
             </div>
