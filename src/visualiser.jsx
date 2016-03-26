@@ -5,36 +5,42 @@ import {Col, Panel, Row} from 'react-bootstrap';
 import {usage$} from './model';
 
 import IconMatrix from './icon_matrix';
+import Sources from './sources';
 import footprintData from './footprint-data';
 
 const Visualiser = observeProps(
   $props => ({usage: usage$}),
   ({usage}) => {
     const impact = {};
+    const sources = new Set();
     Object.entries(usage).forEach(function ([key, value]) {
       const data = footprintData({area: 'us', impact: 'co2', food: key});
       impact[key] = value * data.value;
+      if (value > 0) { sources.add(data.source); }
     });
 
     return (
-      <Row>
-        <Col xs={4}>
-          <Panel style={Object.assign({backgroundImage: `url(${require('../assets/heading-plate.svg')})`}, styles.panelLeft, styles.panelTop)} />
-          <Panel style={styles.panelLeft}>
-            <IconMatrix data={usage} />
-          </Panel>
-        </Col>
-        <Col xs={8}>
-          <Panel style={Object.assign({backgroundImage: `url(${require('../assets/heading-clouds.svg')})`}, styles.panelRight, styles.panelTop)}>
-            <div style={styles.panelTopText}>
-              CO<sub>2</sub>
-            </div>
-          </Panel>
-          <Panel style={styles.panelRight}>
-            <IconMatrix data={impact} />
-          </Panel>
-        </Col>
-      </Row>
+      <div>
+        <Row>
+          <Col xs={4}>
+            <Panel style={Object.assign({backgroundImage: `url(${require('../assets/heading-plate.svg')})`}, styles.panelLeft, styles.panelTop)} />
+            <Panel style={styles.panelLeft}>
+              <IconMatrix data={usage} />
+            </Panel>
+          </Col>
+          <Col xs={8}>
+            <Panel style={Object.assign({backgroundImage: `url(${require('../assets/heading-clouds.svg')})`}, styles.panelRight, styles.panelTop)}>
+              <div style={styles.panelTopText}>
+                CO<sub>2</sub>
+              </div>
+            </Panel>
+            <Panel style={styles.panelRight}>
+              <IconMatrix data={impact} />
+            </Panel>
+          </Col>
+        </Row>
+        <Sources sources={Array.from(sources)}/>
+      </div>
     );
 });
 
