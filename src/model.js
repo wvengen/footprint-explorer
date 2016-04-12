@@ -39,5 +39,5 @@ area$.set$ = areaSet$;
 const typeSet$ = createEventHandler();
 export const type$ = Observable
   .merge(typeSet$)
-  .startWith('matrix').scan((acc, val) => val);
+  .startWith('cloud').scan((acc, val) => val);
 type$.set$ = typeSet$;
