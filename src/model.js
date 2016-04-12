@@ -34,3 +34,10 @@ export const area$ = Observable
   .merge(areaSet$)
   .startWith('us').scan((acc, val) => val);
 area$.set$ = areaSet$;
+
+
+const typeSet$ = createEventHandler();
+export const type$ = Observable
+  .merge(typeSet$)
+  .startWith('matrix').scan((acc, val) => val);
+type$.set$ = typeSet$;
