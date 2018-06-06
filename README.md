@@ -1,3 +1,10 @@
+Moved
+=====
+
+**[This repository has moved to Gitlab.](https://gitlab.com/wvengen/footprint-explorer)**
+
+---
+
 Sustainability Footprint Explorer
 =================================
 An interactive visualisation of the footprint of food on your plate.
@@ -7,7 +14,6 @@ large household, to compare what a move to a more vegan basic diet would
 contribute to the world.  To keep things managable, I looked only at the
 greenhouse gases, and took readily available data (without reading all relevant
 papers). A rough guess, but still better than nothing at all.
-
 
 
 Technologies
